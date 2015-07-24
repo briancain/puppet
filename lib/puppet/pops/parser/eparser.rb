@@ -20,7 +20,7 @@ module Puppet
     module Parser
       class Parser < Racc::Parser
 
-module_eval(<<'...end egrammar.ra/module_eval...', 'egrammar.ra', 781)
+module_eval(<<'...end egrammar.ra/module_eval...', 'egrammar.ra', 782)
 
 # Make emacs happy
 # Local Variables:
@@ -2208,6 +2208,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 507)
   def _reduce_139(val, _values, result)
         body = [Factory.RESOURCE_BODY(val[4], val[6])]
     resource = Factory.RESOURCE(val[2], body)
+    Factory.set_resource_form(resource, :virtual)
 
     result = Factory.PRODUCES(classname(val[0][:value]), resource)
     loc result, val[0], val[7]
@@ -2217,7 +2218,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 507)
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 521)
+module_eval(<<'.,.,', 'egrammar.ra', 522)
   def _reduce_140(val, _values, result)
           # Remove this class' name from the namestack as all nested classes have been parsed
       namepop
@@ -2228,7 +2229,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 521)
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 531)
+module_eval(<<'.,.,', 'egrammar.ra', 532)
   def _reduce_141(val, _values, result)
      namestack(val[0][:value]) ; result = val[0] 
     result
@@ -2241,7 +2242,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 531)
 
 # reduce 144 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 540)
+module_eval(<<'.,.,', 'egrammar.ra', 541)
   def _reduce_145(val, _values, result)
      result = val[1] 
     result
@@ -2252,7 +2253,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 540)
 
 # reduce 147 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 557)
+module_eval(<<'.,.,', 'egrammar.ra', 558)
   def _reduce_148(val, _values, result)
           result = add_definition(Factory.NODE(val[1], val[3], val[5]))
       loc result, val[0], val[6]
@@ -2261,7 +2262,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 557)
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 561)
+module_eval(<<'.,.,', 'egrammar.ra', 562)
   def _reduce_149(val, _values, result)
           result = add_definition(Factory.NODE(val[1], val[3], nil))
       loc result, val[0], val[5]
@@ -2270,14 +2271,14 @@ module_eval(<<'.,.,', 'egrammar.ra', 561)
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 571)
+module_eval(<<'.,.,', 'egrammar.ra', 572)
   def _reduce_150(val, _values, result)
      result = [result] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 572)
+module_eval(<<'.,.,', 'egrammar.ra', 573)
   def _reduce_151(val, _values, result)
      result = val[0].push(val[2]) 
     result
@@ -2288,7 +2289,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 572)
 
 # reduce 153 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 579)
+module_eval(<<'.,.,', 'egrammar.ra', 580)
   def _reduce_154(val, _values, result)
      result = Factory.literal(:default); loc result, val[0] 
     result
@@ -2297,14 +2298,14 @@ module_eval(<<'.,.,', 'egrammar.ra', 579)
 
 # reduce 155 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 583)
+module_eval(<<'.,.,', 'egrammar.ra', 584)
   def _reduce_156(val, _values, result)
      result = Factory.literal(val[0][:value]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 584)
+module_eval(<<'.,.,', 'egrammar.ra', 585)
   def _reduce_157(val, _values, result)
      result = Factory.concat(val[0], '.', val[2][:value]); loc result, val[0], val[2] 
     result
@@ -2317,14 +2318,14 @@ module_eval(<<'.,.,', 'egrammar.ra', 584)
 
 # reduce 160 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 593)
+module_eval(<<'.,.,', 'egrammar.ra', 594)
   def _reduce_161(val, _values, result)
      result = val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 599)
+module_eval(<<'.,.,', 'egrammar.ra', 600)
   def _reduce_162(val, _values, result)
           result = add_definition(Factory.FUNCTION(val[1][:value], val[2], val[4]))
       loc result, val[0], val[5]
@@ -2339,42 +2340,42 @@ module_eval(<<'.,.,', 'egrammar.ra', 599)
 
 # reduce 165 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 610)
+module_eval(<<'.,.,', 'egrammar.ra', 611)
   def _reduce_166(val, _values, result)
      error val[0], "'class' is not a valid classname" 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 614)
+module_eval(<<'.,.,', 'egrammar.ra', 615)
   def _reduce_167(val, _values, result)
      result = [] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 615)
+module_eval(<<'.,.,', 'egrammar.ra', 616)
   def _reduce_168(val, _values, result)
      result = [] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 616)
+module_eval(<<'.,.,', 'egrammar.ra', 617)
   def _reduce_169(val, _values, result)
      result = val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 620)
+module_eval(<<'.,.,', 'egrammar.ra', 621)
   def _reduce_170(val, _values, result)
      result = [val[0]] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 621)
+module_eval(<<'.,.,', 'egrammar.ra', 622)
   def _reduce_171(val, _values, result)
      result = val[0].push(val[2]) 
     result
@@ -2389,140 +2390,140 @@ module_eval(<<'.,.,', 'egrammar.ra', 621)
 
 # reduce 175 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 633)
+module_eval(<<'.,.,', 'egrammar.ra', 634)
   def _reduce_176(val, _values, result)
      result = Factory.PARAM(val[0][:value], val[2]) ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 634)
+module_eval(<<'.,.,', 'egrammar.ra', 635)
   def _reduce_177(val, _values, result)
      result = Factory.PARAM(val[0][:value]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 637)
+module_eval(<<'.,.,', 'egrammar.ra', 638)
   def _reduce_178(val, _values, result)
      result = val[1]; val[1].captures_rest() 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 640)
+module_eval(<<'.,.,', 'egrammar.ra', 641)
   def _reduce_179(val, _values, result)
      val[1].type_expr(val[0]) ; result = val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 643)
+module_eval(<<'.,.,', 'egrammar.ra', 644)
   def _reduce_180(val, _values, result)
      result = val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 644)
+module_eval(<<'.,.,', 'egrammar.ra', 645)
   def _reduce_181(val, _values, result)
      result = val[0][*val[2]] ; loc result, val[0], val[3] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 649)
+module_eval(<<'.,.,', 'egrammar.ra', 650)
   def _reduce_182(val, _values, result)
      result = Factory.fqn(val[0][:value]).var ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 654)
+module_eval(<<'.,.,', 'egrammar.ra', 655)
   def _reduce_183(val, _values, result)
      result = Factory.RESERVED(val[0][:value]) ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 655)
+module_eval(<<'.,.,', 'egrammar.ra', 656)
   def _reduce_184(val, _values, result)
      result = Factory.RESERVED(val[0][:value]) ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 656)
+module_eval(<<'.,.,', 'egrammar.ra', 657)
   def _reduce_185(val, _values, result)
      result = Factory.RESERVED(val[0][:value]) ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 662)
+module_eval(<<'.,.,', 'egrammar.ra', 663)
   def _reduce_186(val, _values, result)
      result = Factory.LIST(val[1]); loc result, val[0], val[3] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 663)
+module_eval(<<'.,.,', 'egrammar.ra', 664)
   def _reduce_187(val, _values, result)
      result = Factory.literal([]) ; loc result, val[0], val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 664)
+module_eval(<<'.,.,', 'egrammar.ra', 665)
   def _reduce_188(val, _values, result)
      result = Factory.LIST(val[1]); loc result, val[0], val[3] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 665)
+module_eval(<<'.,.,', 'egrammar.ra', 666)
   def _reduce_189(val, _values, result)
      result = Factory.literal([]) ; loc result, val[0], val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 668)
+module_eval(<<'.,.,', 'egrammar.ra', 669)
   def _reduce_190(val, _values, result)
      result = Factory.HASH(val[1]); loc result, val[0], val[2] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 669)
+module_eval(<<'.,.,', 'egrammar.ra', 670)
   def _reduce_191(val, _values, result)
      result = Factory.HASH(val[1]); loc result, val[0], val[3] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 670)
+module_eval(<<'.,.,', 'egrammar.ra', 671)
   def _reduce_192(val, _values, result)
      result = Factory.literal({}) ; loc result, val[0], val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 673)
+module_eval(<<'.,.,', 'egrammar.ra', 674)
   def _reduce_193(val, _values, result)
      result = [val[0]] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 674)
+module_eval(<<'.,.,', 'egrammar.ra', 675)
   def _reduce_194(val, _values, result)
      result = val[0].push val[2] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 677)
+module_eval(<<'.,.,', 'egrammar.ra', 678)
   def _reduce_195(val, _values, result)
      result = Factory.KEY_ENTRY(val[0], val[2]); loc result, val[1] 
     result
@@ -2535,98 +2536,98 @@ module_eval(<<'.,.,', 'egrammar.ra', 677)
 
 # reduce 198 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 685)
+module_eval(<<'.,.,', 'egrammar.ra', 686)
   def _reduce_199(val, _values, result)
      result = Factory.literal(val[0][:value]) ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 686)
+module_eval(<<'.,.,', 'egrammar.ra', 687)
   def _reduce_200(val, _values, result)
      result = Factory.literal(val[0][:value]) ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 688)
+module_eval(<<'.,.,', 'egrammar.ra', 689)
   def _reduce_201(val, _values, result)
      result = Factory.string(val[0], *val[1]) ; loc result, val[0], val[1][-1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 689)
+module_eval(<<'.,.,', 'egrammar.ra', 690)
   def _reduce_202(val, _values, result)
      result = Factory.literal(val[0][:value]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 690)
+module_eval(<<'.,.,', 'egrammar.ra', 691)
   def _reduce_203(val, _values, result)
      result = Factory.literal(val[0][:value]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 691)
+module_eval(<<'.,.,', 'egrammar.ra', 692)
   def _reduce_204(val, _values, result)
      result = Factory.literal(val[0][:value]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 692)
+module_eval(<<'.,.,', 'egrammar.ra', 693)
   def _reduce_205(val, _values, result)
      result = [val[0]] + val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 693)
+module_eval(<<'.,.,', 'egrammar.ra', 694)
   def _reduce_206(val, _values, result)
      result = Factory.TEXT(val[0]) 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 696)
+module_eval(<<'.,.,', 'egrammar.ra', 697)
   def _reduce_207(val, _values, result)
      result = [val[0]] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 697)
+module_eval(<<'.,.,', 'egrammar.ra', 698)
   def _reduce_208(val, _values, result)
      result = [val[0]] + val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 700)
+module_eval(<<'.,.,', 'egrammar.ra', 701)
   def _reduce_209(val, _values, result)
      result = Factory.HEREDOC(val[0][:value], val[1]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 703)
+module_eval(<<'.,.,', 'egrammar.ra', 704)
   def _reduce_210(val, _values, result)
      result = Factory.SUBLOCATE(val[0], val[1]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 704)
+module_eval(<<'.,.,', 'egrammar.ra', 705)
   def _reduce_211(val, _values, result)
      result = Factory.SUBLOCATE(val[0], val[1]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 707)
+module_eval(<<'.,.,', 'egrammar.ra', 708)
   def _reduce_212(val, _values, result)
      result = Factory.EPP(val[1], val[2]); loc result, val[0] 
     result
@@ -2637,42 +2638,42 @@ module_eval(<<'.,.,', 'egrammar.ra', 707)
 
 # reduce 214 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 714)
+module_eval(<<'.,.,', 'egrammar.ra', 715)
   def _reduce_215(val, _values, result)
      result = nil 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 715)
+module_eval(<<'.,.,', 'egrammar.ra', 716)
   def _reduce_216(val, _values, result)
      result = [] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 716)
+module_eval(<<'.,.,', 'egrammar.ra', 717)
   def _reduce_217(val, _values, result)
      result = val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 719)
+module_eval(<<'.,.,', 'egrammar.ra', 720)
   def _reduce_218(val, _values, result)
      result = Factory.RENDER_STRING(val[0][:value]); loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 720)
+module_eval(<<'.,.,', 'egrammar.ra', 721)
   def _reduce_219(val, _values, result)
      result = Factory.RENDER_EXPR(val[1]); loc result, val[0], val[2] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 721)
+module_eval(<<'.,.,', 'egrammar.ra', 722)
   def _reduce_220(val, _values, result)
      result = Factory.RENDER_EXPR(Factory.block_or_expression(*val[2])); loc result, val[0], val[4] 
     result
@@ -2683,14 +2684,14 @@ module_eval(<<'.,.,', 'egrammar.ra', 721)
 
 # reduce 222 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 727)
+module_eval(<<'.,.,', 'egrammar.ra', 728)
   def _reduce_223(val, _values, result)
      result = Factory.QREF(val[0][:value])  ; loc result, val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'egrammar.ra', 730)
+module_eval(<<'.,.,', 'egrammar.ra', 731)
   def _reduce_224(val, _values, result)
      result = Factory.literal(val[0][:value]); loc result, val[0] 
     result
@@ -2699,7 +2700,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 730)
 
 # reduce 225 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 736)
+module_eval(<<'.,.,', 'egrammar.ra', 737)
   def _reduce_226(val, _values, result)
      result = nil 
     result
@@ -2750,7 +2751,7 @@ module_eval(<<'.,.,', 'egrammar.ra', 736)
 
 # reduce 248 omitted
 
-module_eval(<<'.,.,', 'egrammar.ra', 765)
+module_eval(<<'.,.,', 'egrammar.ra', 766)
   def _reduce_249(val, _values, result)
      result = nil
     result

@@ -89,7 +89,7 @@ class Puppet::Parser::EnvironmentCompiler < Puppet::Parser::Compiler
     exceptwrap do
       resources.select { |resource| ! resource.resource_type.produces.empty? }.each do |resource|
         Puppet::Util::Profiler.profile("Evaluated resource #{resource}", [:compiler, :evaluate_resource, resource]) do
-          resource.resource_type.evaluate_produces(resource)
+          resource.resource_type.evaluate_env_produces(resource)
         end
       end
     end

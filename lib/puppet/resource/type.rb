@@ -118,6 +118,39 @@ class Puppet::Resource::Type
     # their type and title before we can tell whether they should have been
     # produced in the first place.
     produces.map do |prod|
+      require 'byebug'
+      byebug
+      produced_resource = prod.safeevaluate(scope).first
+      if resource.exports?(produced_resource)
+        produced_resource.exported = true
+      else
+        # safeevaluate puts the resource in the catalog, get rid of it
+        scope.catalog.remove_resource(produced_resource)
+      end
+      produced_resource
+    end
+  end
+
+  def evaluate_env_produces(resources)
+    # Only defined types can produce capabilities
+    return unless definition?
+
+    scope = resource.scope.newscope(:namespace => namespace, :source => self, :resource => resource) unless resource.title == :main
+
+    set_resource_parameters(resource, scope)
+
+    # This, somewhat magically, puts the produced resources into the catalog
+    # @todo lutter 2014-11-12: should they wind up in the catalog ? We
+    # could send them to PuppetDB separately, as something more
+    # special. There's no real need to send them to the agent
+    # @todo lutter 2014-11-12: should there be any dependency on +resource+ ?
+    # @todo lutter 2014-11-12: check that each of these resources is
+    # actually a capability
+    # @todo lutter 2015-04-01: (not an April's fool joke) Note that
+    # produced resources are always evaluated, since we need to find out
+    # their type and title before we can tell whether they should have been
+    # produced in the first place.
+    produces.map do |prod|
       produced_resource = prod.safeevaluate(scope).first
       if resource.exports?(produced_resource)
         scope.catalog.add_edge(produced_resource, resource)

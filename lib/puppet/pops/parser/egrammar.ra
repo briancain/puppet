@@ -507,6 +507,7 @@ produces_expression
   : classname PRODUCES expression LBRACE expression COLON attribute_operations RBRACE {
     body = [Factory.RESOURCE_BODY(val[4], val[6])]
     resource = Factory.RESOURCE(val[2], body)
+    Factory.set_resource_form(resource, :virtual)
 
     result = Factory.PRODUCES(classname(val[0][:value]), resource)
     loc result, val[0], val[7]
